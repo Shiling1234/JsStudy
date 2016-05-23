@@ -1,10 +1,12 @@
+
 function moveElement(elementID, final_x, final_y, interval) {
     if (!document.getElementById) return false;
     if (!document.getElementById(elementID)) return false;
-    var elem = document.getElementById(elementID);
+   var  elem = document.getElementById(elementID);
     if (elem.movement) {
         clearTimeout(elem.movement);
     }
+
     var xpos = parseInt(elem.style.left);
     var ypos = parseInt(elem.style.top);
     if (xpos == final_x && ypos == final_y) {
@@ -25,11 +27,20 @@ function moveElement(elementID, final_x, final_y, interval) {
     elem.style.left = xpos + "px";
     elem.style.top = ypos + "px";
     var repeat = "moveElement('" + elementID + "'," + final_x + "," + final_y + "," + interval + ")";
-    movement = setTimeout(repeat, interval);
+    elem.movement = setTimeout(repeat, interval);
 }
+function startAnimal() {
+     var textDiv=  document.getElementById("new");
+//    textDiv.style.position="absolute";
+     textDiv.style.left="400px";
+    textDiv.style.top="400px";
+    moveElement("new", 200, 200, 100);
+}
+
 window.onload =function() {
    var textDiv=  document.getElementById("new");
-   textDiv.style.left="400";
-   textDiv.style.top="400";
-    moveElement("new", 200, 200, 100);
+   textDiv.style.position="absolute";
+   textDiv.style.left="400px";
+   textDiv.style.top="400px";
+  //  moveElement("new", 200, 200, 100);
 } 
